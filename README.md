@@ -12,7 +12,7 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
   - [Claude Code](https://github.com/anthropics/claude-code) - Anthropic's CLI for Claude
   - [Gemini CLI](https://github.com/google-gemini/gemini-cli) - Google's Gemini CLI
   - [Qwen](https://github.com/QwenLM/Qwen) - Alibaba's Qwen CLI
-  - [Droid](https://github.com/plandex-ai/plandex) - AI coding assistant
+  - [Droid]([https://github.com/plandex-ai/plandex](https://factory.ai/)) - Droid by Factory
   - [Opencode](https://github.com/opencode-ai/opencode) - Open source AI coding assistant
 - **Windows Terminal integration** - Opens in a new terminal tab
 - **Custom icons** for each tool
