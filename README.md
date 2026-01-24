@@ -2,6 +2,8 @@
 
 A Windows context menu integration for popular LLM command-line tools. Right-click on any folder to quickly launch your favorite AI assistants.
 
+![LLM-CLI RC Installer](llm-cli-rc.png)
+
 ![Windows](https://img.shields.io/badge/platform-Windows-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -13,7 +15,7 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
   - [Gemini CLI](https://github.com/google-gemini/gemini-cli) - Google's Gemini CLI
   - [Qwen](https://github.com/QwenLM/Qwen) - Alibaba's Qwen CLI
   - [Droid](https://factory.ai/) - Droid by Factory
-  - [Opencode](https://github.com/opencode-ai/opencode) - Open source AI coding assistant
+  - [Opencode](https://github.com/anomalyco/opencode) - Open source AI coding assistant
 - **Windows Terminal integration** - Opens in a new terminal tab
 - **Custom icons** for each tool
 - **Interactive installer** with configuration options
@@ -57,6 +59,7 @@ You can also right-click on an **empty area** inside any folder to get the same 
 ## Uninstallation
 
 Run `uninstall.bat` to:
+
 - Remove all registry entries
 - Delete the `%USERPROFILE%\.llm-cli` folder and its contents
 
@@ -84,6 +87,7 @@ Run `uninstall.bat` to:
 ## Configuration
 
 The installer creates files in `%USERPROFILE%\.llm-cli\`:
+
 - `assets/` - Copied icon files
 
 **Note:** Administrator privileges are required for installation.
@@ -91,6 +95,7 @@ The installer creates files in `%USERPROFILE%\.llm-cli\`:
 ## Security Note
 
 The **Claude Code (Yolo)** option uses `--dangerously-skip-permissions` which bypasses all permission prompts. While convenient, this means Claude can:
+
 - Read/write files without asking
 - Execute commands without confirmation
 - Make changes to your system
@@ -100,13 +105,16 @@ The **Claude Code (Yolo)** option uses `--dangerously-skip-permissions` which by
 ## Troubleshooting
 
 ### Context menu not appearing
+
 - Try restarting Windows Explorer or logging out/in
 - Check if registry entries exist in `HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI`
 
 ### "wt.exe not found"
+
 - Install [Windows Terminal](https://aka.ms/terminal) from the Microsoft Store
 
 ### CLI not found when launching
+
 - Ensure the CLI tool is installed and available in your system PATH
 - Try running the CLI command directly in a terminal first
 
@@ -117,6 +125,7 @@ MIT License - Feel free to modify and distribute.
 ## Contributing
 
 Contributions are welcome! Feel free to:
+
 - Add support for more LLM CLIs
 - Improve the installer
 - Add new features
@@ -124,3 +133,5 @@ Contributions are welcome! Feel free to:
 ---
 
 **Note:** This tool is not affiliated with Anthropic, Google, Alibaba, or any other AI company. It's a community utility to improve developer workflow.
+
+<a href="https://buymeacoffee.com/avenca.digital" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 207px !important;" ></a>
