@@ -1,0 +1,41 @@
+Windows Registry Editor Version 5.00
+
+; ===============================
+; Remove "LLM CLI" menu from registry
+; ===============================
+
+; Remove all submenus first (Directory)
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Gemini\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Gemini]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Claude\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Claude]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeYolo\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeYolo]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Qwen\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Qwen]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Droid\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Droid]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Opencode\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Opencode]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI]
+
+; Remove all submenus first (Background)
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Gemini\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Gemini]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Claude\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Claude]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeYolo\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeYolo]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Qwen\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Qwen]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Droid\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Droid]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Opencode\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Opencode]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI]
+
+; Remove from HKEY_CLASSES_ROOT (requires admin)
+[-HKEY_CLASSES_ROOT\Directory\shell\LLMCLI]
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\LLMCLI]
