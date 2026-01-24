@@ -26,7 +26,23 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
 - [Windows Terminal](https://aka.ms/terminal) installed
 - The CLI tools you want to use must be installed and available in PATH
 
+> **⚠️ Important:** This project **only installs the context menu integration**. It does **not** install the CLI tools themselves. You must install each CLI tool separately following their official documentation before using this menu.
+
 ## Installation
+
+### Step 1: Install the CLI Tools
+
+Before installing the context menu, make sure you have installed the CLI tools you want to use:
+
+- **[Claude Code](https://github.com/anthropics/claude-code)** - Follow installation instructions in their repository
+- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Check their documentation for setup
+- **[Qwen](https://github.com/QwenLM/Qwen)** - See their official installation guide
+- **[Droid](https://factory.ai/)** - Visit their website for installation steps
+- **[Opencode](https://github.com/anomalyco/opencode)** - Follow their repository instructions
+
+Ensure the CLI tools are available in your system PATH by testing them in a terminal (e.g., `claude`, `gemini`, `qwen`, `droid`, `opencode`).
+
+### Step 2: Install the Context Menu
 
 1. Clone or download this repository
 2. Run `install.bat`
@@ -34,17 +50,19 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
 
 ### Installation Options
 
-During installation, you'll be asked to select which CLI tools to install:
+During installation, you'll be asked to select which **context menu entries** to add:
 
-1. **Claude Code** - Installs two menu options:
+1. **[Claude Code](https://github.com/anthropics/claude-code)** - Adds two menu options:
    - **Claude Code** - Safe mode with permission prompts
    - **Claude Code (Yolo)** - Skips all permission prompts (use with caution)
-2. **Gemini CLI** - Google's Gemini CLI
-3. **Qwen** - Alibaba's Qwen CLI
-4. **Droid** - AI coding assistant
-5. **Opencode** - Open source AI coding assistant
+2. **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Google's Gemini CLI
+3. **[Qwen](https://github.com/QwenLM/Qwen)** - Alibaba's Qwen CLI
+4. **[Droid](https://factory.ai/)** - AI coding assistant
+5. **[Opencode](https://github.com/anomalyco/opencode)** - Open source AI coding assistant
 
-You can install any combination of tools - only the selected ones will appear in the context menu.
+You can select any combination of tools - only the selected ones will appear in the context menu.
+
+**Remember:** Install the actual CLI tools first by visiting their respective documentation pages (linked above).
 
 ## Usage
 
@@ -115,8 +133,11 @@ The **Claude Code (Yolo)** option uses `--dangerously-skip-permissions` which by
 
 ### CLI not found when launching
 
-- Ensure the CLI tool is installed and available in your system PATH
-- Try running the CLI command directly in a terminal first
+This context menu installer does **not** install the CLI tools themselves. If you get a "command not found" error:
+
+- Install the CLI tool by following its official documentation (see Installation section)
+- Ensure the CLI tool is available in your system PATH
+- Test by running the CLI command directly in a terminal first (e.g., `claude --version`)
 
 ## License
 
