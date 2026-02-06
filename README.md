@@ -16,6 +16,7 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
   - [Qwen](https://github.com/QwenLM/Qwen) - Alibaba's Qwen CLI
   - [Droid](https://factory.ai/) - Droid by Factory
   - [Opencode](https://github.com/anomalyco/opencode) - Open source AI coding assistant
+  - [Codebuff](https://www.codebuff.com/referrals/ref-728535a5-2b61-4204-a7a7-d2af7c045bb9) - AI coding assistant CLI
 - **Windows Terminal integration** - Opens in a new terminal tab
 - **Custom icons** for each tool
 - **Interactive installer** with configuration options
@@ -39,8 +40,9 @@ Before installing the context menu, make sure you have installed the CLI tools y
 - **[Qwen](https://github.com/QwenLM/Qwen)** - See their official installation guide
 - **[Droid](https://factory.ai/)** - Visit their website for installation steps
 - **[Opencode](https://github.com/anomalyco/opencode)** - Follow their repository instructions
+- **[Codebuff](https://www.codebuff.com/referrals/ref-728535a5-2b61-4204-a7a7-d2af7c045bb9)** - Visit their website for installation steps
 
-Ensure the CLI tools are available in your system PATH by testing them in a terminal (e.g., `claude`, `gemini`, `qwen`, `droid`, `opencode`).
+Ensure the CLI tools are available in your system PATH by testing them in a terminal (e.g., `claude`, `gemini`, `qwen`, `droid`, `opencode`, `codebuff`).
 
 ### Step 2: Install the Context Menu
 
@@ -59,6 +61,7 @@ During installation, you'll be asked to select which **context menu entries** to
 3. **[Qwen](https://github.com/QwenLM/Qwen)** - Alibaba's Qwen CLI
 4. **[Droid](https://factory.ai/)** - AI coding assistant
 5. **[Opencode](https://github.com/anomalyco/opencode)** - Open source AI coding assistant
+6. **[Codebuff](https://codebuff.com)** - AI coding assistant CLI
 
 You can select any combination of tools - only the selected ones will appear in the context menu.
 
@@ -95,7 +98,8 @@ Run `uninstall.bat` to:
 │   ├── gemini.ico        # Gemini CLI icon
 │   ├── qwen.ico          # Qwen icon
 │   ├── droid.ico         # Droid icon
-│   └── opencode.ico      # Opencode icon
+│   ├── opencode.ico      # Opencode icon
+│   └── codebuff.ico      # Codebuff icon
 ├── registry/             # Registry files
 │   └── LLM_CLI_REMOVER.reg
 ├── legacy/               # Deprecated files

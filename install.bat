@@ -32,13 +32,14 @@ set "INSTALL_GEMINI=0"
 set "INSTALL_QWEN=0"
 set "INSTALL_DROID=0"
 set "INSTALL_OPENCODE=0"
+set "INSTALL_CODEBUFF=0"
 
 echo   SELECT CLI TOOLS
 echo   ----------------------------------------------------------------
 echo.
 
 :: Claude Code
-echo   [1/5] Claude Code
+echo   [1/6] Claude Code
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -49,7 +50,7 @@ if errorlevel 2 (
 echo.
 
 :: Gemini CLI
-echo   [2/5] Gemini CLI
+echo   [2/6] Gemini CLI
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -60,7 +61,7 @@ if errorlevel 2 (
 echo.
 
 :: Qwen
-echo   [3/5] Qwen
+echo   [3/6] Qwen
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -71,7 +72,7 @@ if errorlevel 2 (
 echo.
 
 :: Droid
-echo   [4/5] Droid
+echo   [4/6] Droid
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -82,7 +83,7 @@ if errorlevel 2 (
 echo.
 
 :: Opencode
-echo   [5/5] Opencode
+echo   [5/6] Opencode
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -92,8 +93,19 @@ if errorlevel 2 (
 )
 echo.
 
+:: Codebuff
+echo   [6/6] Codebuff
+choice /C YN /N /M "         Install? [Y/N]: "
+if errorlevel 2 (
+    echo         [-] Skipped
+) else (
+    set "INSTALL_CODEBUFF=1"
+    echo         [+] Selected
+)
+echo.
+
 :: Check if at least one CLI is selected
-set /a "TOTAL=INSTALL_CLAUDE+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE"
+set /a "TOTAL=INSTALL_CLAUDE+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF"
 if %TOTAL%==0 (
     echo   ----------------------------------------------------------------
     echo.
@@ -124,6 +136,7 @@ if %INSTALL_GEMINI%==1 copy /Y "%~dp0assets\gemini.ico" "%DEST%\" >nul
 if %INSTALL_QWEN%==1 copy /Y "%~dp0assets\qwen.ico" "%DEST%\" >nul
 if %INSTALL_DROID%==1 copy /Y "%~dp0assets\droid.ico" "%DEST%\" >nul
 if %INSTALL_OPENCODE%==1 copy /Y "%~dp0assets\opencode.ico" "%DEST%\" >nul
+if %INSTALL_CODEBUFF%==1 copy /Y "%~dp0assets\codebuff.ico" "%DEST%\" >nul
 echo              ^> Icons copied successfully
 echo.
 
@@ -204,6 +217,17 @@ if %INSTALL_OPENCODE%==1 (
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Opencode\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k opencode" /f >nul
 )
 
+:: Add Codebuff if selected
+if %INSTALL_CODEBUFF%==1 (
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codebuff" /v "MUIVerb" /t REG_SZ /d "Codebuff" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codebuff" /v "Icon" /t REG_SZ /d "%DEST%\codebuff.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codebuff\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k codebuff" /f >nul
+    
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codebuff" /v "MUIVerb" /t REG_SZ /d "Codebuff" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codebuff" /v "Icon" /t REG_SZ /d "%DEST%\codebuff.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codebuff\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k codebuff" /f >nul
+)
+
 echo              ^> Registry updated successfully
 echo.
 
@@ -220,6 +244,7 @@ if %INSTALL_GEMINI%==1 echo       [+] Gemini CLI
 if %INSTALL_QWEN%==1 echo       [+] Qwen
 if %INSTALL_DROID%==1 echo       [+] Droid
 if %INSTALL_OPENCODE%==1 echo       [+] Opencode
+if %INSTALL_CODEBUFF%==1 echo       [+] Codebuff
 echo.
 echo   ----------------------------------------------------------------
 echo.
