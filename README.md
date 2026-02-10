@@ -12,6 +12,7 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
 - **One-click access** to multiple LLM CLIs from Windows Explorer
 - **Supported tools:**
   - [Claude Code](https://github.com/anthropics/claude-code) - Anthropic's CLI for Claude
+  - [GLM - (Claude Code)](https://z.ai/subscribe?ic=DLZMYQBGJY) - Claude Code using GLM API (glm-4.7)
   - [Gemini CLI](https://github.com/google-gemini/gemini-cli) - Google's Gemini CLI
   - [Qwen](https://github.com/QwenLM/Qwen) - Alibaba's Qwen CLI
   - [Droid](https://factory.ai/) - Droid by Factory
@@ -57,11 +58,12 @@ During installation, you'll be asked to select which **context menu entries** to
 1. **[Claude Code](https://github.com/anthropics/claude-code)** - Adds two menu options:
    - **Claude Code** - Safe mode with permission prompts
    - **Claude Code (Yolo)** - Skips all permission prompts (use with caution)
-2. **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Google's Gemini CLI
-3. **[Qwen](https://github.com/QwenLM/Qwen)** - Alibaba's Qwen CLI
-4. **[Droid](https://factory.ai/)** - AI coding assistant
-5. **[Opencode](https://github.com/anomalyco/opencode)** - Open source AI coding assistant
-6. **[Codebuff](https://codebuff.com)** - AI coding assistant CLI
+2. **[GLM - (Claude Code)](https://z.ai/subscribe?ic=DLZMYQBGJY)** - Runs Claude Code using a GLM-compatible API (you'll be prompted for credentials during install — see [GLM Configuration](#glm-configuration))
+3. **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Google's Gemini CLI
+4. **[Qwen](https://github.com/QwenLM/Qwen)** - Alibaba's Qwen CLI
+5. **[Droid](https://factory.ai/)** - AI coding assistant
+6. **[Opencode](https://github.com/anomalyco/opencode)** - Open source AI coding assistant
+7. **[Codebuff](https://codebuff.com)** - AI coding assistant CLI
 
 You can select any combination of tools - only the selected ones will appear in the context menu.
 
@@ -111,8 +113,24 @@ Run `uninstall.bat` to:
 The installer creates files in `%USERPROFILE%\.llm-cli\`:
 
 - `assets/` - Copied icon files
+- `claude-glm.cmd` - Generated script with GLM credentials (only if GLM is selected)
 
 **Note:** Administrator privileges are required for installation.
+
+### GLM Configuration
+
+When you select **Claude Code (GLM)** during installation, the installer will prompt you for:
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| **API Token** | Your GLM API authentication token | *(required)* |
+| **Base URL** | The GLM-compatible API endpoint | `https://api.z.ai/api/anthropic` |
+| **Model** | The model name to use | `glm-4.7` |
+| **Timeout** | Request timeout in milliseconds | `3000000` |
+
+These values are stored locally in `%USERPROFILE%\.llm-cli\claude-glm.cmd` and are **never committed to the repository**. Each user provides their own credentials during installation.
+
+To update your GLM credentials, simply re-run `install.bat` and select the GLM option again.
 
 ## Security Note
 

@@ -28,6 +28,7 @@ echo.
 
 :: Initialize CLI selections
 set "INSTALL_CLAUDE=0"
+set "INSTALL_CLAUDE_GLM=0"
 set "INSTALL_GEMINI=0"
 set "INSTALL_QWEN=0"
 set "INSTALL_DROID=0"
@@ -39,7 +40,7 @@ echo   ----------------------------------------------------------------
 echo.
 
 :: Claude Code
-echo   [1/6] Claude Code
+echo   [1/7] Claude Code
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -49,8 +50,40 @@ if errorlevel 2 (
 )
 echo.
 
+:: Claude Code (GLM)
+echo   [2/7] Claude Code (GLM)
+choice /C YN /N /M "         Install? [Y/N]: "
+if errorlevel 2 (
+    echo         [-] Skipped
+) else (
+    set "INSTALL_CLAUDE_GLM=1"
+    echo         [+] Selected
+    echo.
+    echo         GLM Configuration:
+    echo         Press Enter to keep defaults
+    echo.
+:glm_token_prompt
+    set /p "GLM_TOKEN=         API Token (required): "
+    if "!GLM_TOKEN!"=="" (
+        echo         ^! API Token cannot be empty. Please try again.
+        goto glm_token_prompt
+    )
+    set "GLM_BASE_URL="
+    set /p "GLM_BASE_URL=         Base URL (Press Enter => https://api.z.ai/api/anthropic): "
+    if "!GLM_BASE_URL!"=="" set "GLM_BASE_URL=https://api.z.ai/api/anthropic"
+    set "GLM_MODEL="
+    set /p "GLM_MODEL=         Model (Press Enter => glm-4.7): "
+    if "!GLM_MODEL!"=="" set "GLM_MODEL=glm-4.7"
+    set "GLM_TIMEOUT="
+    set /p "GLM_TIMEOUT=         Timeout in ms (Press Enter => 3000000): "
+    if "!GLM_TIMEOUT!"=="" set "GLM_TIMEOUT=3000000"
+    echo.
+    echo         [OK] GLM configured
+)
+echo.
+
 :: Gemini CLI
-echo   [2/6] Gemini CLI
+echo   [3/7] Gemini CLI
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -61,7 +94,7 @@ if errorlevel 2 (
 echo.
 
 :: Qwen
-echo   [3/6] Qwen
+echo   [4/7] Qwen
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -72,7 +105,7 @@ if errorlevel 2 (
 echo.
 
 :: Droid
-echo   [4/6] Droid
+echo   [5/7] Droid
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -83,7 +116,7 @@ if errorlevel 2 (
 echo.
 
 :: Opencode
-echo   [5/6] Opencode
+echo   [6/7] Opencode
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -94,7 +127,7 @@ if errorlevel 2 (
 echo.
 
 :: Codebuff
-echo   [6/6] Codebuff
+echo   [7/7] Codebuff
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -105,7 +138,7 @@ if errorlevel 2 (
 echo.
 
 :: Check if at least one CLI is selected
-set /a "TOTAL=INSTALL_CLAUDE+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF"
+set /a "TOTAL=INSTALL_CLAUDE+INSTALL_CLAUDE_GLM+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF"
 if %TOTAL%==0 (
     echo   ----------------------------------------------------------------
     echo.
@@ -132,6 +165,20 @@ echo.
 echo   [Step 2/3] Copying icons...
 copy /Y "%~dp0assets\cli.ico" "%DEST%\" >nul
 if %INSTALL_CLAUDE%==1 copy /Y "%~dp0assets\claude.ico" "%DEST%\" >nul
+if %INSTALL_CLAUDE_GLM%==1 (
+    copy /Y "%~dp0assets\claude.ico" "%DEST%\" >nul
+    :: Generate claude-glm.cmd with user's credentials
+    (
+        echo @echo off
+        echo set ANTHROPIC_AUTH_TOKEN=!GLM_TOKEN!
+        echo set ANTHROPIC_BASE_URL=!GLM_BASE_URL!
+        echo set API_TIMEOUT_MS=!GLM_TIMEOUT!
+        echo set ANTHROPIC_DEFAULT_OPUS_MODEL=!GLM_MODEL!
+        echo set ANTHROPIC_DEFAULT_HAIKU_MODEL=!GLM_MODEL!
+        echo set ANTHROPIC_DEFAULT_SONNET_MODEL=!GLM_MODEL!
+        echo claude
+    ) > "%USERPROFILE%\.llm-cli\claude-glm.cmd"
+)
 if %INSTALL_GEMINI%==1 copy /Y "%~dp0assets\gemini.ico" "%DEST%\" >nul
 if %INSTALL_QWEN%==1 copy /Y "%~dp0assets\qwen.ico" "%DEST%\" >nul
 if %INSTALL_DROID%==1 copy /Y "%~dp0assets\droid.ico" "%DEST%\" >nul
@@ -171,6 +218,18 @@ if %INSTALL_CLAUDE%==1 (
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeYolo" /v "MUIVerb" /t REG_SZ /d "Claude Code (Yolo)" /f >nul
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeYolo" /v "Icon" /t REG_SZ /d "%DEST%\claude.ico" /f >nul
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeYolo\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k claude --dangerously-skip-permissions" /f >nul
+)
+
+:: Add Claude GLM if selected
+if %INSTALL_CLAUDE_GLM%==1 (
+    :: Claude Code (GLM) - uses helper script to set env vars per session
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeGLM" /v "MUIVerb" /t REG_SZ /d "Claude Code (GLM)" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeGLM" /v "Icon" /t REG_SZ /d "%DEST%\claude.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeGLM\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k \"%USERPROFILE%\.llm-cli\claude-glm.cmd\"" /f >nul
+
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM" /v "MUIVerb" /t REG_SZ /d "Claude Code (GLM)" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM" /v "Icon" /t REG_SZ /d "%DEST%\claude.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k \"%USERPROFILE%\.llm-cli\claude-glm.cmd\"" /f >nul
 )
 
 :: Add Gemini if selected
@@ -240,6 +299,7 @@ echo.
 echo   Installed tools:
 echo.
 if %INSTALL_CLAUDE%==1 echo       [+] Claude Code / Claude Code (Yolo)
+if %INSTALL_CLAUDE_GLM%==1 echo       [+] Claude Code (GLM)
 if %INSTALL_GEMINI%==1 echo       [+] Gemini CLI
 if %INSTALL_QWEN%==1 echo       [+] Qwen
 if %INSTALL_DROID%==1 echo       [+] Droid
