@@ -136,6 +136,44 @@ These values are stored locally in `%USERPROFILE%\.llm-cli\claude-glm.cmd` and a
 
 To update your GLM credentials, simply re-run `install.bat` and select the GLM option again.
 
+### Editing the GLM Script Manually
+
+You can also edit the generated file directly at `%USERPROFILE%\.llm-cli\claude-glm.cmd` without re-running the installer. This is useful for:
+
+- Changing the **API Key** (`ANTHROPIC_AUTH_TOKEN`)
+- Switching the **model** (`ANTHROPIC_DEFAULT_OPUS_MODEL`, `ANTHROPIC_DEFAULT_HAIKU_MODEL`, `ANTHROPIC_DEFAULT_SONNET_MODEL`)
+- Changing the **Base URL** or **Timeout**
+- Adding **extra environment variables** for Claude Code features
+
+The default generated file looks like this:
+
+```bat
+@echo off
+set ANTHROPIC_AUTH_TOKEN=your-api-token
+set ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
+set API_TIMEOUT_MS=3000000
+set ANTHROPIC_DEFAULT_OPUS_MODEL=glm-4.7
+set ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-4.7
+set ANTHROPIC_DEFAULT_SONNET_MODEL=glm-4.7
+claude
+```
+
+You can add any additional `set` lines before the `claude` command to enable experimental features or pass custom configuration. For example, to enable Agent Teams:
+
+```bat
+@echo off
+set ANTHROPIC_AUTH_TOKEN=your-api-token
+set ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
+set API_TIMEOUT_MS=3000000
+set ANTHROPIC_DEFAULT_OPUS_MODEL=glm-4.7
+set ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-4.7
+set ANTHROPIC_DEFAULT_SONNET_MODEL=glm-4.7
+set CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+claude
+```
+
+Any environment variable supported by Claude Code can be added this way. Changes take effect the next time you launch Claude Code (GLM) from the context menu.
+
 ## Security Note
 
 The **Claude Code (Yolo)** option uses `--dangerously-skip-permissions` which bypasses all permission prompts. While convenient, this means Claude can:
