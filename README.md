@@ -6,6 +6,9 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
 
 ![Windows](https://img.shields.io/badge/platform-Windows-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![BuyMeACoffee](https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg)](https://buymeacoffee.com/avenca.digital)
+
+---
 
 ## Features
 
@@ -163,7 +166,7 @@ This context menu installer does **not** install the CLI tools themselves. If yo
 
 ## License
 
-MIT License - Feel free to modify and distribute.
+MIT License
 
 ## Contributing
 
@@ -174,7 +177,5 @@ Contributions are welcome! Feel free to:
 - Add new features
 
 ---
-
-**Note:** This tool is not affiliated with Anthropic, Google, Alibaba, or any other AI company. It's a community utility to improve developer workflow.
 
 <a href="https://buymeacoffee.com/avenca.digital" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 207px !important;" ></a>
