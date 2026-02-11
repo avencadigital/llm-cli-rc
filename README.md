@@ -100,6 +100,7 @@ Run `uninstall.bat` to:
 ├── assets/               # Icon files
 │   ├── cli.ico           # Main menu icon
 │   ├── claude.ico        # Claude Code icon
+│   ├── claudeglm.ico    # Claude Code (GLM) icon
 │   ├── gemini.ico        # Gemini CLI icon
 │   ├── qwen.ico          # Qwen icon
 │   ├── droid.ico         # Droid icon

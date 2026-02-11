@@ -166,7 +166,7 @@ echo   [Step 2/3] Copying icons...
 copy /Y "%~dp0assets\cli.ico" "%DEST%\" >nul
 if %INSTALL_CLAUDE%==1 copy /Y "%~dp0assets\claude.ico" "%DEST%\" >nul
 if %INSTALL_CLAUDE_GLM%==1 (
-    copy /Y "%~dp0assets\claude.ico" "%DEST%\" >nul
+    copy /Y "%~dp0assets\claudeglm.ico" "%DEST%\" >nul
     :: Generate claude-glm.cmd with user's credentials
     (
         echo @echo off
@@ -224,11 +224,11 @@ if %INSTALL_CLAUDE%==1 (
 if %INSTALL_CLAUDE_GLM%==1 (
     :: Claude Code (GLM) - uses helper script to set env vars per session
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeGLM" /v "MUIVerb" /t REG_SZ /d "Claude Code (GLM)" /f >nul
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeGLM" /v "Icon" /t REG_SZ /d "%DEST%\claude.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeGLM" /v "Icon" /t REG_SZ /d "%DEST%\claudeglm.ico" /f >nul
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\ClaudeGLM\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k \"%USERPROFILE%\.llm-cli\claude-glm.cmd\"" /f >nul
 
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM" /v "MUIVerb" /t REG_SZ /d "Claude Code (GLM)" /f >nul
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM" /v "Icon" /t REG_SZ /d "%DEST%\claude.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM" /v "Icon" /t REG_SZ /d "%DEST%\claudeglm.ico" /f >nul
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k \"%USERPROFILE%\.llm-cli\claude-glm.cmd\"" /f >nul
 )
 
