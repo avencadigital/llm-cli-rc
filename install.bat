@@ -35,13 +35,14 @@ set "INSTALL_DROID=0"
 set "INSTALL_OPENCODE=0"
 set "INSTALL_CODEBUFF=0"
 set "INSTALL_KILO=0"
+set "INSTALL_CODEX=0"
 
 echo   SELECT CLI TOOLS
 echo   ----------------------------------------------------------------
 echo.
 
 :: Claude Code
-echo   [1/7] Claude Code
+echo   [1/9] Claude Code
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -52,7 +53,7 @@ if errorlevel 2 (
 echo.
 
 :: Claude Code (GLM)
-echo   [2/7] Claude Code (GLM)
+echo   [2/9] Claude Code (GLM)
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -84,7 +85,7 @@ if errorlevel 2 (
 echo.
 
 :: Gemini CLI
-echo   [3/7] Gemini CLI
+echo   [3/9] Gemini CLI
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -95,7 +96,7 @@ if errorlevel 2 (
 echo.
 
 :: Qwen
-echo   [4/7] Qwen
+echo   [4/9] Qwen
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -106,7 +107,7 @@ if errorlevel 2 (
 echo.
 
 :: Droid
-echo   [5/7] Droid
+echo   [5/9] Droid
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -117,7 +118,7 @@ if errorlevel 2 (
 echo.
 
 :: Opencode
-echo   [6/7] Opencode
+echo   [6/9] Opencode
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -128,7 +129,7 @@ if errorlevel 2 (
 echo.
 
 :: Codebuff
-echo   [7/8] Codebuff
+echo   [7/9] Codebuff
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -139,7 +140,7 @@ if errorlevel 2 (
 echo.
 
 :: Kilo
-echo   [8/8] Kilo
+echo   [8/9] Kilo
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -149,8 +150,19 @@ if errorlevel 2 (
 )
 echo.
 
+:: Codex CLI
+echo   [9/9] Codex CLI
+choice /C YN /N /M "         Install? [Y/N]: "
+if errorlevel 2 (
+    echo         [-] Skipped
+) else (
+    set "INSTALL_CODEX=1"
+    echo         [+] Selected
+)
+echo.
+
 :: Check if at least one CLI is selected
-set /a "TOTAL=INSTALL_CLAUDE+INSTALL_CLAUDE_GLM+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF+INSTALL_KILO"
+set /a "TOTAL=INSTALL_CLAUDE+INSTALL_CLAUDE_GLM+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF+INSTALL_KILO+INSTALL_CODEX"
 if %TOTAL%==0 (
     echo   ----------------------------------------------------------------
     echo.
@@ -197,6 +209,7 @@ if %INSTALL_DROID%==1 copy /Y "%~dp0assets\droid.ico" "%DEST%\" >nul
 if %INSTALL_OPENCODE%==1 copy /Y "%~dp0assets\opencode.ico" "%DEST%\" >nul
 if %INSTALL_CODEBUFF%==1 copy /Y "%~dp0assets\codebuff.ico" "%DEST%\" >nul
 if %INSTALL_KILO%==1 copy /Y "%~dp0assets\kilo.ico" "%DEST%\" >nul
+if %INSTALL_CODEX%==1 copy /Y "%~dp0assets\codex.ico" "%DEST%\" >nul
 echo              ^> Icons copied successfully
 echo.
 
@@ -311,6 +324,17 @@ if %INSTALL_KILO%==1 (
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Kilo\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k kilo" /f >nul
 )
 
+:: Add Codex CLI if selected
+if %INSTALL_CODEX%==1 (
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codex" /v "MUIVerb" /t REG_SZ /d "Codex CLI" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codex" /v "Icon" /t REG_SZ /d "%DEST%\codex.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codex\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k codex" /f >nul
+    
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codex" /v "MUIVerb" /t REG_SZ /d "Codex CLI" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codex" /v "Icon" /t REG_SZ /d "%DEST%\codex.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codex\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k codex" /f >nul
+)
+
 echo              ^> Registry updated successfully
 echo.
 
@@ -330,6 +354,7 @@ if %INSTALL_DROID%==1 echo       [+] Droid
 if %INSTALL_OPENCODE%==1 echo       [+] Opencode
 if %INSTALL_CODEBUFF%==1 echo       [+] Codebuff
 if %INSTALL_KILO%==1 echo       [+] Kilo
+if %INSTALL_CODEX%==1 echo       [+] Codex CLI
 echo.
 echo   ----------------------------------------------------------------
 echo.
