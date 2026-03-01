@@ -34,6 +34,7 @@ set "INSTALL_QWEN=0"
 set "INSTALL_DROID=0"
 set "INSTALL_OPENCODE=0"
 set "INSTALL_CODEBUFF=0"
+set "INSTALL_KILO=0"
 
 echo   SELECT CLI TOOLS
 echo   ----------------------------------------------------------------
@@ -127,7 +128,7 @@ if errorlevel 2 (
 echo.
 
 :: Codebuff
-echo   [7/7] Codebuff
+echo   [7/8] Codebuff
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
@@ -137,8 +138,19 @@ if errorlevel 2 (
 )
 echo.
 
+:: Kilo
+echo   [8/8] Kilo
+choice /C YN /N /M "         Install? [Y/N]: "
+if errorlevel 2 (
+    echo         [-] Skipped
+) else (
+    set "INSTALL_KILO=1"
+    echo         [+] Selected
+)
+echo.
+
 :: Check if at least one CLI is selected
-set /a "TOTAL=INSTALL_CLAUDE+INSTALL_CLAUDE_GLM+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF"
+set /a "TOTAL=INSTALL_CLAUDE+INSTALL_CLAUDE_GLM+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF+INSTALL_KILO"
 if %TOTAL%==0 (
     echo   ----------------------------------------------------------------
     echo.
@@ -184,6 +196,7 @@ if %INSTALL_QWEN%==1 copy /Y "%~dp0assets\qwen.ico" "%DEST%\" >nul
 if %INSTALL_DROID%==1 copy /Y "%~dp0assets\droid.ico" "%DEST%\" >nul
 if %INSTALL_OPENCODE%==1 copy /Y "%~dp0assets\opencode.ico" "%DEST%\" >nul
 if %INSTALL_CODEBUFF%==1 copy /Y "%~dp0assets\codebuff.ico" "%DEST%\" >nul
+if %INSTALL_KILO%==1 copy /Y "%~dp0assets\kilo.ico" "%DEST%\" >nul
 echo              ^> Icons copied successfully
 echo.
 
@@ -287,6 +300,17 @@ if %INSTALL_CODEBUFF%==1 (
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codebuff\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k codebuff" /f >nul
 )
 
+:: Add Kilo if selected
+if %INSTALL_KILO%==1 (
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Kilo" /v "MUIVerb" /t REG_SZ /d "Kilo" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Kilo" /v "Icon" /t REG_SZ /d "%DEST%\kilo.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Kilo\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k kilo" /f >nul
+    
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Kilo" /v "MUIVerb" /t REG_SZ /d "Kilo" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Kilo" /v "Icon" /t REG_SZ /d "%DEST%\kilo.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Kilo\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k kilo" /f >nul
+)
+
 echo              ^> Registry updated successfully
 echo.
 
@@ -305,6 +329,7 @@ if %INSTALL_QWEN%==1 echo       [+] Qwen
 if %INSTALL_DROID%==1 echo       [+] Droid
 if %INSTALL_OPENCODE%==1 echo       [+] Opencode
 if %INSTALL_CODEBUFF%==1 echo       [+] Codebuff
+if %INSTALL_KILO%==1 echo       [+] Kilo
 echo.
 echo   ----------------------------------------------------------------
 echo.

@@ -21,6 +21,8 @@ Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Opencode]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codebuff\command]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Codebuff]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Kilo\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Kilo]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI]
 
@@ -41,6 +43,8 @@ Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Opencode]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codebuff\command]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codebuff]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Kilo\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Kilo]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI]
 
