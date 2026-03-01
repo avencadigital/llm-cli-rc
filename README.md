@@ -132,7 +132,6 @@ Run `uninstall.bat` to:
 │   └── codex.ico         # Codex CLI icon
 ├── registry/             # Registry files
 │   └── LLM_CLI_REMOVER.reg
-├── legacy/               # Deprecated files
 └── README.md             # This file
 ```
 
