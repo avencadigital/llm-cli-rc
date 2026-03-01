@@ -2,12 +2,7 @@
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
 
-:: Request admin privileges
-net session >nul 2>&1
-if %errorlevel% neq 0 (
-    powershell -Command "Start-Process '%~f0' -Verb RunAs"
-    exit /b
-)
+:: No admin elevation required - HKCU registry removal is user-scoped
 
 cls
 echo.

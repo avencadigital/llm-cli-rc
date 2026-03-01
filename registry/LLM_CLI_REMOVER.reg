@@ -51,7 +51,3 @@ Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Codex]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI]
-
-; Remove from HKEY_CLASSES_ROOT (requires admin)
-[-HKEY_CLASSES_ROOT\Directory\shell\LLMCLI]
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\LLMCLI]

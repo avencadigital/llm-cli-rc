@@ -51,6 +51,23 @@ Before installing the context menu, make sure you have installed the CLI tools y
 
 Ensure the CLI tools are available in your system PATH by testing them in a terminal (e.g., `claude`, `gemini`, `qwen`, `droid`, `opencode`, `codebuff`, `kilo`, `codex`).
 
+#### Quick Install Reference
+
+| Tool | Install Command |
+|------|-----------------|
+| Claude Code (PowerShell) | `irm https://claude.ai/install.ps1 \| iex` |
+| Claude Code (CMD) | `curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd` |
+| GLM (Claude Code) | Same as Claude Code |
+| Gemini CLI | `npm install -g @google/gemini-cli` |
+| Qwen | `npm install -g @qwen-code/qwen-code@latest` |
+| Droid | `npm install -g droid` |
+| Opencode | `npm install -g opencode-ai` |
+| Codebuff | `npm install -g codebuff` |
+| Kilo | `npm install -g @kilocode/cli` |
+| Codex CLI | `npm i -g @openai/codex` |
+
+> **Note:** Installation commands may vary. Always refer to the official documentation for the most up-to-date installation instructions.
+
 ### Step 2: Install the Context Menu
 
 1. Clone or download this repository
@@ -94,7 +111,7 @@ Run `uninstall.bat` to:
 - Remove all registry entries
 - Delete the `%USERPROFILE%\.llm-cli` folder and its contents
 
-**Note:** Administrator privileges are required for uninstallation.
+> **Note:** Uninstallation does not require administrator privileges.
 
 ## File Structure
 
@@ -126,7 +143,7 @@ The installer creates files in `%USERPROFILE%\.llm-cli\`:
 - `assets/` - Copied icon files
 - `claude-glm.cmd` - Generated script with GLM credentials (only if GLM is selected)
 
-**Note:** Administrator privileges are required for installation.
+> **Note:** Installation does not require administrator privileges. Registry entries are created in user scope (`HKEY_CURRENT_USER`).
 
 ### GLM Configuration
 
