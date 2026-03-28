@@ -66,14 +66,12 @@ if errorlevel 2 (
         goto glm_token_prompt
     )
     set "GLM_BASE_URL="
-    set /p "GLM_BASE_URL=         Base URL (Press Enter => https://api.z.ai/api/anthropic): "
+    set /p "GLM_BASE_URL=         Base URL -> https://api.z.ai/api/anthropic (Press Enter to keep default): "
     if "!GLM_BASE_URL!"=="" set "GLM_BASE_URL=https://api.z.ai/api/anthropic"
     set "GLM_MODEL="
-    set /p "GLM_MODEL=         Model (Press Enter => glm-4.7): "
-    if "!GLM_MODEL!"=="" set "GLM_MODEL=glm-4.7"
-    set "GLM_TIMEOUT="
-    set /p "GLM_TIMEOUT=         Timeout in ms (Press Enter => 3000000): "
-    if "!GLM_TIMEOUT!"=="" set "GLM_TIMEOUT=3000000"
+    set /p "GLM_MODEL=         Model (Press Enter => glm-5.1): "
+    if "!GLM_MODEL!"=="" set "GLM_MODEL=glm-5.1"
+    set "GLM_TIMEOUT=3000000"
     echo.
     echo         [OK] GLM configured
 )
@@ -212,11 +210,11 @@ echo.
 echo   [Step 3/3] Applying registry entries...
 
 :: Create main menu structure
-reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI" /v "MUIVerb" /t REG_SZ /d "LLM-CLI RC" /f >nul
+reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI" /v "MUIVerb" /t REG_SZ /d "Open with AI CLI" /f >nul
 reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI" /v "Icon" /t REG_SZ /d "%DEST%\cli.ico" /f >nul
 reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI" /v "SubCommands" /t REG_SZ /d "" /f >nul
 
-reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI" /v "MUIVerb" /t REG_SZ /d "LLM-CLI RC" /f >nul
+reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI" /v "MUIVerb" /t REG_SZ /d "Open with AI CLI" /f >nul
 reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI" /v "Icon" /t REG_SZ /d "%DEST%\cli.ico" /f >nul
 reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI" /v "SubCommands" /t REG_SZ /d "" /f >nul
 
@@ -353,7 +351,7 @@ if %INSTALL_CODEX%==1 echo       [+] Codex CLI
 echo.
 echo   ----------------------------------------------------------------
 echo.
-echo   Right-click on any folder to see the "LLM CLI" menu.
+echo   Right-click on any folder to see the "Open with AI CLI" menu.
 echo   To uninstall, run: uninstall.bat
 echo.
 pause

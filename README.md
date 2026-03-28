@@ -1,8 +1,8 @@
-# LLM-CLI RC Context Menu
+# RightClick CLI
 
-A Windows context menu integration for popular LLM command-line tools. Right-click on any folder to quickly launch your favorite AI assistants.
+Windows context menu launcher for AI coding CLIs.
 
-![LLM-CLI RC Installer](llm-cli-rc.png)
+![RightClick CLI Installer](llm-cli-rc.png)
 
 ![Windows](https://img.shields.io/badge/platform-Windows-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -15,14 +15,14 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
 - **One-click access** to multiple LLM CLIs from Windows Explorer
 - **Supported tools:**
   - [Claude Code](https://github.com/anthropics/claude-code) - Anthropic's CLI for Claude
-  - [GLM - (Claude Code)](https://z.ai/subscribe?ic=DLZMYQBGJY) - Claude Code using GLM API (glm-4.7)
-  - [Gemini CLI](https://github.com/google-gemini/gemini-cli) - Google's Gemini CLI
-  - [Qwen](https://github.com/QwenLM/Qwen) - Alibaba's Qwen CLI
-  - [Droid](https://factory.ai/) - Droid by Factory
-  - [Opencode](https://github.com/anomalyco/opencode) - Open source AI coding assistant
   - [Codebuff](https://www.codebuff.com/referrals/ref-728535a5-2b61-4204-a7a7-d2af7c045bb9) - AI coding assistant CLI
-  - [Kilo](https://kilo.ai/cli) - Kilo AI CLI
   - [Codex CLI](https://developers.openai.com/codex/cli/) - Codex CLI
+  - [Droid](https://factory.ai/) - Droid by Factory
+  - [Gemini CLI](https://github.com/google-gemini/gemini-cli) - Google's Gemini CLI
+  - [GLM - (Claude Code)](https://z.ai/subscribe?ic=DLZMYQBGJY) - Claude Code using GLM API (glm-5.1)
+  - [Kilo](https://kilo.ai/cli) - Kilo AI CLI
+  - [Opencode](https://github.com/anomalyco/opencode) - Open source AI coding assistant
+  - [Qwen](https://github.com/QwenLM/Qwen) - Alibaba's Qwen CLI
 - **Windows Terminal integration** - Opens in a new terminal tab
 - **Custom icons** for each tool
 - **Interactive installer** with configuration options
@@ -99,7 +99,7 @@ You can select any combination of tools - only the selected ones will appear in 
 After installation:
 
 1. Right-click on any **folder** in Windows Explorer
-2. Select **"LLM-CLI RC"** from the context menu
+2. Select **"Open with AI CLI"** from the context menu
 3. Choose your preferred AI assistant
 
 You can also right-click on an **empty area** inside any folder to get the same menu.
@@ -152,7 +152,7 @@ When you select **Claude Code (GLM)** during installation, the installer will pr
 |-----------|-------------|---------|
 | **API Token** | Your GLM API authentication token | *(required)* |
 | **Base URL** | The GLM-compatible API endpoint | `https://api.z.ai/api/anthropic` |
-| **Model** | The model name to use | `glm-4.7` |
+| **Model** | The model name to use | `glm-5.1` |
 | **Timeout** | Request timeout in milliseconds | `3000000` |
 
 These values are stored locally in `%USERPROFILE%\.llm-cli\claude-glm.cmd` and are **never committed to the repository**. Each user provides their own credentials during installation.
@@ -175,9 +175,9 @@ The default generated file looks like this:
 set ANTHROPIC_AUTH_TOKEN=your-api-token
 set ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
 set API_TIMEOUT_MS=3000000
-set ANTHROPIC_DEFAULT_OPUS_MODEL=glm-4.7
-set ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-4.7
-set ANTHROPIC_DEFAULT_SONNET_MODEL=glm-4.7
+set ANTHROPIC_DEFAULT_OPUS_MODEL=glm-5.1
+set ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-5.1
+set ANTHROPIC_DEFAULT_SONNET_MODEL=glm-5.1
 claude
 ```
 
@@ -188,9 +188,9 @@ You can add any additional `set` lines before the `claude` command to enable exp
 set ANTHROPIC_AUTH_TOKEN=your-api-token
 set ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
 set API_TIMEOUT_MS=3000000
-set ANTHROPIC_DEFAULT_OPUS_MODEL=glm-4.7
-set ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-4.7
-set ANTHROPIC_DEFAULT_SONNET_MODEL=glm-4.7
+set ANTHROPIC_DEFAULT_OPUS_MODEL=glm-5.1
+set ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-5.1
+set ANTHROPIC_DEFAULT_SONNET_MODEL=glm-5.1
 set CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 claude
 ```

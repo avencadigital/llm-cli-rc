@@ -22,7 +22,7 @@ echo.
 echo   UNINSTALL
 echo   ----------------------------------------------------------------
 echo.
-echo   ^! Warning: This will remove the LLM-CLI RC context menu
+echo   ^! Warning: This will remove the RightClick CLI context menu
 echo     and all associated files from your system.
 echo.
 
@@ -57,7 +57,7 @@ echo                  UNINSTALLATION COMPLETE!
 echo.
 echo   ================================================================
 echo.
-echo   The LLM-CLI RC context menu has been removed from your system.
+echo   The RightClick CLI context menu has been removed from your system.
 echo   To reinstall, run: install.bat
 echo.
 pause
