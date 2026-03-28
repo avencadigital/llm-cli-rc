@@ -1,6 +1,7 @@
-# RightClick CLI
+# RightClick CLI | Windows context menu launcher for AI coding CLIs
 
-Windows context menu launcher for AI coding CLIs.
+A Windows context menu integration for popular LLM command-line tools. Right-click on any folder to quickly launch your favorite AI assistants. Claude Code, Opencode, Codebuff, Gemini CLI, Kilo Code CLI, Qwen Code, GLM, Droid, OpenAI Codex
+
 
 ![RightClick CLI Installer](llm-cli-rc.png)
 
