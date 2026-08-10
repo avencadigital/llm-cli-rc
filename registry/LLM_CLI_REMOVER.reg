@@ -5,6 +5,8 @@ Windows Registry Editor Version 5.00
 ; ===============================
 
 ; Remove all submenus first (Directory)
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Antigravity\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Antigravity]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Gemini\command]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Gemini]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Claude\command]
@@ -29,6 +31,8 @@ Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI]
 
 ; Remove all submenus first (Background)
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Antigravity\command]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Antigravity]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Gemini\command]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Gemini]
 [-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Claude\command]

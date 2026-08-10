@@ -24,7 +24,7 @@ echo.
 :: Initialize CLI selections
 set "INSTALL_CLAUDE=0"
 set "INSTALL_CLAUDE_GLM=0"
-set "INSTALL_GEMINI=0"
+set "INSTALL_ANTIGRAVITY=0"
 set "INSTALL_QWEN=0"
 set "INSTALL_DROID=0"
 set "INSTALL_OPENCODE=0"
@@ -77,13 +77,13 @@ if errorlevel 2 (
 )
 echo.
 
-:: Gemini CLI
-echo   [3/9] Gemini CLI
+:: Antigravity CLI
+echo   [3/9] Antigravity CLI
 choice /C YN /N /M "         Install? [Y/N]: "
 if errorlevel 2 (
     echo         [-] Skipped
 ) else (
-    set "INSTALL_GEMINI=1"
+    set "INSTALL_ANTIGRAVITY=1"
     echo         [+] Selected
 )
 echo.
@@ -155,7 +155,7 @@ if errorlevel 2 (
 echo.
 
 :: Check if at least one CLI is selected
-set /a "TOTAL=INSTALL_CLAUDE+INSTALL_CLAUDE_GLM+INSTALL_GEMINI+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF+INSTALL_KILO+INSTALL_CODEX"
+set /a "TOTAL=INSTALL_CLAUDE+INSTALL_CLAUDE_GLM+INSTALL_ANTIGRAVITY+INSTALL_QWEN+INSTALL_DROID+INSTALL_OPENCODE+INSTALL_CODEBUFF+INSTALL_KILO+INSTALL_CODEX"
 if %TOTAL%==0 (
     echo   ----------------------------------------------------------------
     echo.
@@ -196,7 +196,7 @@ if %INSTALL_CLAUDE_GLM%==1 (
         echo claude
     ) > "%USERPROFILE%\.llm-cli\claude-glm.cmd"
 )
-if %INSTALL_GEMINI%==1 copy /Y "%~dp0assets\gemini.ico" "%DEST%\" >nul
+if %INSTALL_ANTIGRAVITY%==1 copy /Y "%~dp0assets\antigravity.ico" "%DEST%\" >nul
 if %INSTALL_QWEN%==1 copy /Y "%~dp0assets\qwen.ico" "%DEST%\" >nul
 if %INSTALL_DROID%==1 copy /Y "%~dp0assets\droid.ico" "%DEST%\" >nul
 if %INSTALL_OPENCODE%==1 copy /Y "%~dp0assets\opencode.ico" "%DEST%\" >nul
@@ -251,15 +251,15 @@ if %INSTALL_CLAUDE_GLM%==1 (
     reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\ClaudeGLM\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k \"%USERPROFILE%\.llm-cli\claude-glm.cmd\"" /f >nul
 )
 
-:: Add Gemini if selected
-if %INSTALL_GEMINI%==1 (
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Gemini" /v "MUIVerb" /t REG_SZ /d "Gemini" /f >nul
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Gemini" /v "Icon" /t REG_SZ /d "%DEST%\gemini.ico" /f >nul
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Gemini\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k gemini" /f >nul
+:: Add Antigravity CLI if selected
+if %INSTALL_ANTIGRAVITY%==1 (
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Antigravity" /v "MUIVerb" /t REG_SZ /d "Antigravity CLI" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Antigravity" /v "Icon" /t REG_SZ /d "%DEST%\antigravity.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\shell\LLMCLI\shell\Antigravity\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k agy" /f >nul
     
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Gemini" /v "MUIVerb" /t REG_SZ /d "Gemini" /f >nul
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Gemini" /v "Icon" /t REG_SZ /d "%DEST%\gemini.ico" /f >nul
-    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Gemini\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k gemini" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Antigravity" /v "MUIVerb" /t REG_SZ /d "Antigravity CLI" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Antigravity" /v "Icon" /t REG_SZ /d "%DEST%\antigravity.ico" /f >nul
+    reg add "HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\LLMCLI\shell\Antigravity\command" /ve /t REG_SZ /d "wt.exe -d \"%%V\" cmd /k agy" /f >nul
 )
 
 :: Add Qwen if selected
@@ -341,7 +341,7 @@ echo   Installed tools:
 echo.
 if %INSTALL_CLAUDE%==1 echo       [+] Claude Code / Claude Code (Yolo)
 if %INSTALL_CLAUDE_GLM%==1 echo       [+] Claude Code (GLM)
-if %INSTALL_GEMINI%==1 echo       [+] Gemini CLI
+if %INSTALL_ANTIGRAVITY%==1 echo       [+] Antigravity CLI
 if %INSTALL_QWEN%==1 echo       [+] Qwen
 if %INSTALL_DROID%==1 echo       [+] Droid
 if %INSTALL_OPENCODE%==1 echo       [+] Opencode

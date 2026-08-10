@@ -1,6 +1,6 @@
 # RightClick CLI | Windows context menu launcher for AI coding CLIs
 
-A Windows context menu integration for popular LLM command-line tools. Right-click on any folder to quickly launch your favorite AI assistants. Claude Code, Opencode, Codebuff, Gemini CLI, Kilo Code CLI, Qwen Code, GLM, Droid, OpenAI Codex
+A Windows context menu integration for popular LLM command-line tools. Right-click on any folder to quickly launch your favorite AI assistants. Claude Code, Opencode, Codebuff, Antigravity CLI, Kilo Code CLI, Qwen Code, GLM, Droid, OpenAI Codex
 
 
 ![RightClick CLI Installer](llm-cli-rc.png)
@@ -19,7 +19,7 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
   - [Codebuff](https://www.codebuff.com/referrals/ref-728535a5-2b61-4204-a7a7-d2af7c045bb9) - AI coding assistant CLI
   - [Codex CLI](https://developers.openai.com/codex/cli/) - Codex CLI
   - [Droid](https://factory.ai/) - Droid by Factory
-  - [Gemini CLI](https://github.com/google-gemini/gemini-cli) - Google's Gemini CLI
+  - [Antigravity CLI](https://github.com/google-gemini/antigravity-cli) - Google's Antigravity CLI (`agy`)
   - [GLM - (Claude Code)](https://z.ai/subscribe?ic=DLZMYQBGJY) - Claude Code using GLM API (glm-5.2)
   - [Kilo](https://kilo.ai/cli) - Kilo AI CLI
   - [Opencode](https://github.com/anomalyco/opencode) - Open source AI coding assistant
@@ -43,14 +43,14 @@ A Windows context menu integration for popular LLM command-line tools. Right-cli
 Before installing the context menu, make sure you have installed the CLI tools you want to use:
 
 - **[Claude Code](https://github.com/anthropics/claude-code)** - Follow installation instructions in their repository
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Check their documentation for setup
+- **[Antigravity CLI](https://github.com/google-gemini/antigravity-cli)** - Google's new agent-first CLI assistant (command: `agy`), which succeeds the now deprecated Gemini CLI.
 - **[Qwen](https://github.com/QwenLM/Qwen)** - See their official installation guide
 - **[Droid](https://factory.ai/)** - Visit their website for installation steps
 - **[Opencode](https://github.com/anomalyco/opencode)** - Follow their repository instructions
 - **[Codebuff](https://www.codebuff.com/referrals/ref-728535a5-2b61-4204-a7a7-d2af7c045bb9)** - Visit their website for installation steps
 - **[Codex CLI](https://developers.openai.com/codex/cli/)** - Visit their website for installation steps
 
-Ensure the CLI tools are available in your system PATH by testing them in a terminal (e.g., `claude`, `gemini`, `qwen`, `droid`, `opencode`, `codebuff`, `kilo`, `codex`).
+Ensure the CLI tools are available in your system PATH by testing them in a terminal (e.g., `claude`, `agy`, `qwen`, `droid`, `opencode`, `codebuff`, `kilo`, `codex`).
 
 #### Quick Install Reference
 
@@ -59,7 +59,7 @@ Ensure the CLI tools are available in your system PATH by testing them in a term
 | Claude Code (PowerShell) | `irm https://claude.ai/install.ps1 \| iex` |
 | Claude Code (CMD) | `curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd` |
 | GLM (Claude Code) | Same as Claude Code |
-| Gemini CLI | `npm install -g @google/gemini-cli` |
+| Antigravity CLI (PowerShell) | `irm https://antigravity.google/cli/install.ps1 \| iex` |
 | Qwen | `npm install -g @qwen-code/qwen-code@latest` |
 | Droid | `npm install -g droid` |
 | Opencode | `npm install -g opencode-ai` |
@@ -67,7 +67,7 @@ Ensure the CLI tools are available in your system PATH by testing them in a term
 | Kilo | `npm install -g @kilocode/cli` |
 | Codex CLI | `npm i -g @openai/codex` |
 
-> **Note:** Installation commands may vary. Always refer to the official documentation for the most up-to-date installation instructions.
+> **Note:** Gemini CLI was officially deprecated by Google and replaced by Antigravity CLI (`agy`). Always refer to the official documentation for the most up-to-date installation instructions.
 
 ### Step 2: Install the Context Menu
 
@@ -83,7 +83,7 @@ During installation, you'll be asked to select which **context menu entries** to
    - **Claude Code** - Safe mode with permission prompts
    - **Claude Code (Yolo)** - Skips all permission prompts (use with caution)
 2. **[GLM - (Claude Code)](https://z.ai/subscribe?ic=DLZMYQBGJY)** - Runs Claude Code using a GLM-compatible API (you'll be prompted for credentials during install — see [GLM Configuration](#glm-configuration))
-3. **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Google's Gemini CLI
+3. **[Antigravity CLI](https://github.com/google-gemini/antigravity-cli)** - Google's Antigravity CLI (`agy`)
 4. **[Qwen](https://github.com/QwenLM/Qwen)** - Alibaba's Qwen CLI
 5. **[Droid](https://factory.ai/)** - AI coding assistant
 6. **[Opencode](https://github.com/anomalyco/opencode)** - Open source AI coding assistant
@@ -124,7 +124,7 @@ Run `uninstall.bat` to:
 │   ├── cli.ico           # Main menu icon
 │   ├── claude.ico        # Claude Code icon
 │   ├── claudeglm.ico    # Claude Code (GLM) icon
-│   ├── gemini.ico        # Gemini CLI icon
+│   ├── antigravity.ico  # Antigravity CLI icon
 │   ├── qwen.ico          # Qwen icon
 │   ├── droid.ico         # Droid icon
 │   ├── opencode.ico      # Opencode icon
